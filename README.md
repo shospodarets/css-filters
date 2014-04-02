@@ -7,6 +7,6 @@ To run the project do the following in the project folder:
 
 <code>$ gulp</code>
 
-Open (if browser doesn't do it automatically): [http://localhost:3000/](http://localhost:3000/)
+Open: [http://localhost:3000/](http://localhost:3000/)
 
 - [Demo.](http://gospodarets.com/developments/color-schemes-using-css-filters/)
