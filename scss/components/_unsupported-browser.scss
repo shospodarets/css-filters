@@ -1,0 +1,14 @@
+.not-supported-browser-msg {
+  display: none;
+}
+
+/* IF BROWSER IS NOT SUPPORTED */
+.not-supported-browser {
+  .not-supported-browser-msg {
+    display: block;
+  }
+
+  #container {
+    display: none;
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "globals": {
+        "window": false,
+        "require": false,
+        "exports": false
+    },
+    "globalstrict": true,
+    "browser": true,
+    "newcap": false,// e.g. "new" is not needed for L (first letter in Uppercase)
+    "sub": true,// This option suppresses warnings about using [] notation when it can be expressed in dot notation: person['name'] vs. person.name.
+    "expr": true,// allow Obj && Obj.method without assignment to something
+    "multistr": true,// allow using \ in strings
+    "devel": true// alert, console..
+}

@@ -1,0 +1,46 @@
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #000;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
+  background: #fff;
+  //noinspection SassScssUnresolvedFunction
+  @include add-prop-vendors(background, radial-gradient(center, ellipse cover, #ffffff 0%, #bbbbbb 100%));
+}
+
+img {
+  border-style: none;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 20px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+#container > * {
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-header {
+  font-size: 1.5em;
+}

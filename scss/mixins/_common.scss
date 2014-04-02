@@ -1,0 +1,25 @@
+@mixin add-vendors($prop, $value...) {
+  -ms-#{$prop}: $value;
+  -moz-#{$prop}: $value;
+  -webkit-#{$prop}: $value;
+  #{$prop}: $value;
+}
+
+@mixin add-prop-vendors($prop, $value) {
+  #{$prop}: -ms-#{$value};
+  #{$prop}: -moz-#{$value};
+  #{$prop}: -webkit-#{$value};
+  #{$prop}: #{$value};
+}
+
+@mixin ellipsisOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clearFix {
+  display: block;
+  content: '';
+  clear:both;
+}

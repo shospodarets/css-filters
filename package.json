@@ -1,0 +1,16 @@
+{
+    "name": "color-schemes-using-css-filters",
+    "version": "0.1.0",
+    "devDependencies": {
+        "gulp": "~3.6.0",
+        "gulp-browserify": "",
+        "gulp-uglify": "",
+        "gulp-compass": "",
+        "gulp-imagemin": "",
+        "gulp-minify-html": "",
+        "gulp-rename": "",
+        "gulp-clean": "",
+        "gulp-connect": "",
+        "gulp-jshint": ""
+    }
+}

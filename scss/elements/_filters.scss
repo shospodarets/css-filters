@@ -1,0 +1,31 @@
+.css-filters {
+  @include add-vendors(column-count, 2);
+
+  @media only screen and (max-width: 480px) {
+    @include add-vendors(column-count, 1);
+  }
+}
+
+.filter {
+  line-height: 25px;
+  padding: 0 2% 5px 2%;
+
+  .filter-box {
+    @include clearFix;
+
+    .filter-text {
+      width: 20%;
+      float: left;
+
+      @include ellipsisOverflow;
+    }
+
+    .input-wrapper {
+      overflow: hidden;
+
+      .range {
+        width: 98%;
+      }
+    }
+  }
+}
