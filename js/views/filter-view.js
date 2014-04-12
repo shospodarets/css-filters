@@ -53,7 +53,7 @@ FilterView.prototype.createDom = function (filterData) {
 };
 
 FilterView.prototype.bindEvents = function () {
-    this.inputEl.addEventListener('change', this.onFilterValueChange.bind(this));
+    this.inputEl.addEventListener('input', this.onFilterValueChange.bind(this));
 };
 
 FilterView.prototype.onFilterValueChange = function () {
