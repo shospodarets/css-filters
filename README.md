@@ -9,4 +9,4 @@ To run the project do the following in the project folder:
 
 Open: [http://localhost:3000/](http://localhost:3000/)
 
-- [Demo.](http://gospodarets.com/developments/color-schemes-using-css-filters/)
+- [Demo.](http://malyw.github.io/color-schemes-using-css-filters/)
