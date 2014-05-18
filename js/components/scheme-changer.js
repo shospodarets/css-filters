@@ -1,6 +1,8 @@
 'use strict';
 
-var UTILS = require('../utils/utils');
+var UTILS = require('../utils/utils'),
+    filterProperty = UTILS.filterProperty,
+    getCssDeclaration = UTILS.getCssDeclaration;
 
 /**
  * @constructor
@@ -20,7 +22,8 @@ var UTILS = require('../utils/utils');
 var SchemeChanger = function (options) {
     this.options = options;
 
-    this.bodyEl = document.body;
+    this.demoEl = document.querySelector('.demo-img');
+    this.appliedFilterText = document.querySelector('.applied-filter');
 
     this.setScheme(options.filtersModelData);
 };
@@ -101,21 +104,10 @@ SchemeChanger.prototype.getEnabledFilters = function (filtersModelData) {
 };
 
 SchemeChanger.prototype.setFilterCss = function (cssValue) {
-    // ToDo:
-    // css style for input and page
-    // check if browser support all features
+    if (!cssValue) cssValue = ' none';
 
-    var vendors = [
-            '-webkit-filter',
-            '-moz-filter',
-            '-ms-filter',
-            'filter'
-        ],
-        that = this;
-
-    vendors.forEach(function (vendor) {
-        that.bodyEl.style[vendor] = cssValue;
-    });
+    this.demoEl.style[filterProperty] = cssValue;
+    this.appliedFilterText.textContent = getCssDeclaration(filterProperty, cssValue);
 };
 
 exports.SchemeChanger = SchemeChanger;
