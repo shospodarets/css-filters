@@ -3,7 +3,8 @@ var FiltersController = require('./controllers/filters-controller').FiltersContr
     filtersData = require('./data/filters-data').filtersData,
     SchemeChanger = require('./components/scheme-changer').SchemeChanger,
     Iframe = require('./components/iframe').Iframe,
-    SupportedBrowser = require('./components/supported-browser').SupportedBrowser;
+    SupportedBrowser = require('./components/supported-browser').SupportedBrowser,
+    Presets = require('./components/presets').Presets;
 
 var App = function () {
     // check if browser supports all features
@@ -27,11 +28,16 @@ var App = function () {
         filtersModelData: this.filtersController.getFiltersModelData()
     });
 
+    this.presets = new Presets({
+        btnGroup: '.presets .button-group'
+    });
+
     this.bindEvents();
 };
 
 App.prototype.bindEvents = function () {
     this.filtersController.on('filtersChanged', this.schemeChanger.setScheme, this.schemeChanger);
+    this.presets.on('presetActivated', this.filtersController.setFiltersFromPreset, this.filtersController);
 };
 
 exports.App = App;

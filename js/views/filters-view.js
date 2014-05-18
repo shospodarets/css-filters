@@ -60,4 +60,12 @@ FiltersView.prototype.onFilterChange = function (params) {
     this.trigger('filterChanged', params);
 };
 
+FiltersView.prototype.setFilterValues = function (filtersData) {// update values without triggering events etc.
+    var filterName;
+    for (filterName in filtersData) {
+        if (!this.filtersViews[filterName]) throw 'Incorrect filter data';
+        this.filtersViews[filterName].inputEl.value = filtersData[filterName]['current'];
+    }
+};
+
 exports.FiltersView = FiltersView;

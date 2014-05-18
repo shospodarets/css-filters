@@ -62,6 +62,10 @@ FiltersModel.prototype.updateFilterData = function (name) {
     this.filtersData[name] = filterModel.getData();
 };
 
+FiltersModel.prototype.setFiltersData = function (filterData) {
+    return this.filtersData = filterData;
+};
+
 // OTHER
 /**
  * @param {{

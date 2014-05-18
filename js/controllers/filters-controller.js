@@ -36,11 +36,41 @@ FiltersController.prototype.onFilterViewChanged = function (params) {
     // update model when view change
     this.filtersModel.onFilterViewChanged(params);
     // and trigger event with filters data
-    this.trigger('filtersChanged', this.getFiltersModelData());
+    this.triggerDataChanged();
 };
 
 FiltersController.prototype.getFiltersModelData = function () {
     return this.filtersModel.getFiltersData();
+};
+
+FiltersController.prototype.triggerDataChanged = function () {
+    this.trigger('filtersChanged', this.getFiltersModelData());
+};
+
+/**
+ * Set filter values from preset and reset others
+ */
+FiltersController.prototype.setFiltersFromPreset = function (presetFiltersData) {
+    var filtersData = UTILS.cloneObj(this.filtersModel.getFiltersData()),
+        filterName;
+    // PREPARE FILTERDATA
+    // reset all filters except which are in preset
+    for (filterName in filtersData) {
+        if (presetFiltersData[filterName]) {// if there is filter in preset
+            // set from preset
+            filtersData[filterName]['current'] = presetFiltersData[filterName];
+        } else {
+            //reset
+            filtersData[filterName]['current'] = 0;
+        }
+    }
+
+    // SET FILTERDATA
+    this.filtersView.setFilterValues(filtersData);
+    this.filtersModel.setFiltersData(filtersData);
+
+    // TRIGGER
+    this.triggerDataChanged();
 };
 
 exports.FiltersController = FiltersController;
