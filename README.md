@@ -1,7 +1,6 @@
-<h2>The project shows how to use css filters
-and how to create inverted schemes for the site</h2>
+# [CSS filters in action](http://malyw.github.io/css-filters/) 
 
-To run the project do the following in the project folder:
+To run the project, do the following in the project folder:
 
 <code>$ npm install</code>
 
@@ -9,4 +8,4 @@ To run the project do the following in the project folder:
 
 Open: [http://localhost:3000/](http://localhost:3000/)
 
-- [Demo.](http://malyw.github.io/color-schemes-using-css-filters/)
+- <b>[Demo.](http://malyw.github.io/css-filters/)</b>
