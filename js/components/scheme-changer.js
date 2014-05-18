@@ -22,7 +22,7 @@ var UTILS = require('../utils/utils'),
 var SchemeChanger = function (options) {
     this.options = options;
 
-    this.demoEl = document.querySelector('.demo-img');
+    this.demoEls = document.querySelectorAll('.apply-filters');
     this.appliedFilterText = document.querySelector('.applied-filter');
 
     this.setScheme(options.filtersModelData);
@@ -106,7 +106,9 @@ SchemeChanger.prototype.getEnabledFilters = function (filtersModelData) {
 SchemeChanger.prototype.setFilterCss = function (cssValue) {
     if (!cssValue) cssValue = ' none';
 
-    this.demoEl.style[filterProperty] = cssValue;
+    for (var i = this.demoEls.length; i--;) {
+        this.demoEls[i].style[filterProperty] = cssValue;
+    }
     this.appliedFilterText.textContent = getCssDeclaration(filterProperty, cssValue);
 };
 

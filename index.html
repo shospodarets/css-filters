@@ -26,6 +26,7 @@
     <p class="text-center main-header">
         Your browser doesn't support some features in current project.
     </p>
+
     <p class="text-center">
         You can visit <a href="http://browsehappy.com/">this site</a> to update your browser.
     </p>
@@ -34,7 +35,7 @@
 <div id="container">
     <h1 class="text-center main-header">Color schemes using css filters</h1>
 
-    <div class="demo-img">
+    <div class="demo-img apply-filters">
         <img class="center-block" src="img/demo.jpg" alt="Demo img"/>
     </div>
     <div class="applied-filter text-center">
@@ -43,11 +44,26 @@
     <div class="css-filters">
         <!-- here will be css filters -->
     </div>
-    <div class="demo-iframe">
+    <div class="iframe-wrapper">
         <!-- here will be demo iframe -->
     </div>
 </div>
 
+<script class="iframe-box-tmpl" type="text/template">
+    <form class="src-form">
+        <input class="src-submit" type="submit" value="Open URL"/>
+
+        <div class="input-wrapper">
+            <input class="src-input" type="url" required/>
+        </div>
+    </form>
+    <iframe
+            class="apply-filters"
+            src=""
+            frameborder="0" allowtransparency="true" border="0"
+            width="100%" height="300px"
+            ></iframe>
+</script>
 <!--suppress HtmlUnknownTarget -->
 <script src="js/bundle.js"></script>
 </body>

@@ -1,0 +1,54 @@
+.iframe-wrapper {
+  $inputHeight: 34px;
+  $bg: rgb(192, 192, 192);
+
+  padding: 0 5px;
+
+  iframe {
+    background: transparent;
+    border: 3px solid $bg;
+  }
+
+  .src-form {
+    @include clearFix;
+    padding: 5px 0;
+  }
+
+  .src-submit {
+    float: right;
+    background-color: $bg;
+
+    height: $inputHeight;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 4px;
+    margin: 0;
+  }
+
+  .input-wrapper {
+    overflow: hidden;
+    padding-right: 5px;
+  }
+
+  .src-input {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    height: $inputHeight;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
