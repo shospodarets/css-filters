@@ -26,7 +26,7 @@ exports.cloneObj = function (obj) {
 
 // Return css string
 exports.getCssDeclaration = function (prop, value) {
-    return prop + ':' + value + ';'
+    return prop + ':' + value + ';';
 };
 
 // detect if "filter" property needs vendor
