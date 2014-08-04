@@ -122,10 +122,12 @@ gulp.task('build', [
 ]);
 
 // Run server on http://localhost:3000/ and init livereload
-gulp.task('connect', connect.server({
-    root: ['build'],
-    livereload: true
-}));
+gulp.task('connect', function () {
+    connect.server({
+        root: ['build'],
+        livereload: true
+    });
+});
 
 // Rerun the task when a file changes
 gulp.task('watch', function () {

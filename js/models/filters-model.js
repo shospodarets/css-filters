@@ -63,7 +63,7 @@ FiltersModel.prototype.updateFilterData = function (name) {
 };
 
 FiltersModel.prototype.setFiltersData = function (filterData) {
-    return this.filtersData = filterData;
+    return (this.filtersData = filterData);
 };
 
 // OTHER

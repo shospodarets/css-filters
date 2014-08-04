@@ -2,7 +2,7 @@
     "name": "css-filters",
     "version": "0.1.0",
     "devDependencies": {
-        "gulp": "~3.6.0",
+        "gulp": "",
         "gulp-browserify": "",
         "gulp-uglify": "",
         "gulp-compass": "",
