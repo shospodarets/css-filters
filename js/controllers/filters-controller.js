@@ -1,7 +1,6 @@
 'use strict';
 
 var UTILS = require('../utils/utils'),
-    EventsSystem = require('../utils/events-system').EventsSystem,
     FiltersModel = require('../models/filters-model').FiltersModel,
     FiltersView = require('../views/filters-view').FiltersView;
 
@@ -9,7 +8,8 @@ var UTILS = require('../utils/utils'),
  * @constructor
  * @param {{
  *  filtersData: {Object},
- *  viewWrapper: {String}
+ *  viewWrapper: {String},
+ *  onFiltersChange: {Function}
  * }} options
  */
 var FiltersController = function (options) {
@@ -25,8 +25,6 @@ var FiltersController = function (options) {
 
     this.bindEvents();
 };
-
-UTILS.inherit(FiltersController, EventsSystem);
 
 FiltersController.prototype.bindEvents = function () {
     this.filtersView.on('filterChanged', this.onFilterViewChanged, this);
@@ -44,7 +42,7 @@ FiltersController.prototype.getFiltersModelData = function () {
 };
 
 FiltersController.prototype.triggerDataChanged = function () {
-    this.trigger('filtersChanged', this.getFiltersModelData());
+    this.options.onFiltersChange(this.getFiltersModelData());
 };
 
 /**
@@ -71,6 +69,18 @@ FiltersController.prototype.setFiltersFromPreset = function (presetFiltersData) 
 
     // TRIGGER
     this.triggerDataChanged();
+};
+
+FiltersController.prototype.getActiveFiltersData = function () {
+    var filtersData = UTILS.cloneObj(this.filtersModel.getFiltersData()),
+        filterName,
+        activeFiltersData = {};
+    for (filterName in filtersData) {
+        if (filtersData[filterName]["current"] !== 0) {
+            activeFiltersData[filterName] = filtersData[filterName]["current"];
+        }
+    }
+    return activeFiltersData;
 };
 
 exports.FiltersController = FiltersController;

@@ -1,13 +1,14 @@
 'use strict';
 
-var UTILS = require('../utils/utils'),
-    EventsSystem = require('../utils/events-system').EventsSystem,
-    presetsData = require('../data/presets-data').presetsData;
+var presetsData = require('../data/presets-data').presetsData;
 
 /**
- *
- * @param options
  * @constructor
+ * @param {{
+*   btnGroup: {String},
+*   onPresetActivated: {Function},
+*   [activeFilters]: {Object}
+* }} options
  */
 var Presets = function (options) {
     this.options = options;
@@ -15,28 +16,40 @@ var Presets = function (options) {
     this.btnGroup = document.querySelector(this.options.btnGroup);
 
     this.createDom();
+    this.setActiveFiltersOnInit();
 };
-
-UTILS.inherit(Presets, EventsSystem);
 
 Presets.prototype.createDom = function () {
     presetsData.forEach(function (presetData) {
         var btn = document.createElement('span');
         btn.classList.add('button');
         btn.textContent = presetData.name;
-        btn.addEventListener('click', this.onPresetClick.bind(this, presetData.filters), false);
-        if (presetData.activeOnInit) {// activate on init if needed
-            setTimeout(function () {// FIXME wait obser will listen component
-                this.onPresetClick(presetData.filters);
-            }.bind(this), 0);
-        }
-
+        btn.addEventListener('click', this.setFilters.bind(this, presetData.filters), false);
         this.btnGroup.appendChild(btn);
     }, this);
 };
 
-Presets.prototype.onPresetClick = function (filtersData) {
-    this.trigger('presetActivated', filtersData);
+Presets.prototype.setFilters = function (filtersData) {
+    this.options.onPresetActivated(filtersData);// trigger set filters
+};
+
+Presets.prototype.getActiveFiltersFromData = function () {
+    var activeFilters = null;
+    presetsData.forEach(function (presetData) {
+        if (presetData.activeOnInit) {// activate on init if needed
+            activeFilters = presetData;
+        }
+    });
+    return activeFilters.filters;
+};
+
+Presets.prototype.setActiveFiltersOnInit = function () {
+    var filtersData = this.options.activeFilters;// filters data from url
+    if (!filtersData) {// otherwise- from json
+        filtersData = this.getActiveFiltersFromData();
+    }
+
+    this.setFilters(filtersData);
 };
 
 exports.Presets = Presets;

@@ -37,6 +37,7 @@ Iframe.prototype.bindEvents = function () {
 
 Iframe.prototype.setIframeSrc = function () {
     this.iframe.setAttribute('src', this.src);
+    this.options.onIframeSrcChange(this.src);// trigger src change
 };
 
 Iframe.prototype.setInputSrcValue = function (value) {
