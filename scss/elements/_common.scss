@@ -15,6 +15,7 @@ body {
   color: #000;
   font-family: Arial, Verdana, Tahoma, sans-serif;
   background: #fff;
+  position: relative;
   //noinspection SassScssUnresolvedFunction
   @include add-prop-vendors(background, radial-gradient(center, ellipse cover, #ffffff 0%, #bbbbbb 100%));
 }
@@ -50,4 +51,8 @@ p {
 
 .main-header {
   font-size: 1.5em;
+}
+
+.apply-filters{
+  @include add-vendors(transition, all .5s ease);
 }

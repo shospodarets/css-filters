@@ -1,4 +1,4 @@
-@mixin add-vendors($prop, $value...) {
+@mixin add-vendors($prop, $value) {
   -ms-#{$prop}: $value;
   -moz-#{$prop}: $value;
   -webkit-#{$prop}: $value;

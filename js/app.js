@@ -5,16 +5,21 @@ var FiltersController = require('./controllers/filters-controller').FiltersContr
     Iframe = require('./components/iframe').Iframe,
     SupportedBrowser = require('./components/supported-browser').SupportedBrowser,
     Presets = require('./components/presets').Presets,
-    RouterController = require('./controllers/router-controller').RouterController;
+    RouterController = require('./controllers/router-controller').RouterController,
+    Modal = require('./components/modal').Modal;
 
 var App = function () {
+    var APPLY_CLASS = 'apply-filters',// to which class filters will be applied
+        APPLY_SELECTOR = '.' + APPLY_CLASS;// to which css selector filters will be applied
+
     // check if browser supports all features
     this.supportedBrowser = new SupportedBrowser();
     if (!this.supportedBrowser.isBrowserSupported) return;
 
     this.routerController = new RouterController({
         srcParam: 'src',
-        filtersParam: 'filters'
+        filtersParam: 'filters',
+        modalParam: 'modal'
     });
 
     this.filtersController = new FiltersController({
@@ -32,8 +37,17 @@ var App = function () {
         onIframeSrcChange: this.onIframeSrcChange.bind(this)
     });
 
+    this.modal = new Modal({
+        modalWrapper: '.modal-wrapper',
+        modalBoxTmplEl: '.modal-box-tmpl',
+        applyClass: APPLY_CLASS,
+        onModalVisibilityChange: this.onModalVisibilityChange.bind(this),
+        isOpen: this.routerController.getModalFromUrl()
+    });
+
     this.schemeChanger = new SchemeChanger({
-        filtersModelData: this.filtersController.getFiltersModelData()
+        filtersModelData: this.filtersController.getFiltersModelData(),
+        applySelector: APPLY_SELECTOR
     });
 
     this.presets = new Presets({
@@ -55,6 +69,10 @@ App.prototype.onFiltersChange = function (filtersModelData) {
 
 App.prototype.onIframeSrcChange = function (src) {
     this.routerController.setIframeSrcToUrl(src);
+};
+
+App.prototype.onModalVisibilityChange = function (isOpen) {
+    this.routerController.setModalToUrl(isOpen);
 };
 
 exports.App = App;

@@ -1,0 +1,43 @@
+// ACTIONS
+.modal-actions {
+  text-align: center;
+}
+
+// MODAL
+.modal-wrapper {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  .modal-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    @include add-vendors(transform, translateX(-50%) translateY(-50%));
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 21px;
+
+    .title {
+      font-size: 120%;
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// SHOW MODAL
+.show-modal {
+  .modal-wrapper {
+    display: block;
+  }
+
+  #container {
+    pointer-events: none; // to prevent user actions until modal will be closed
+  }
+}

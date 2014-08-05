@@ -32,6 +32,8 @@
     </p>
 </div>
 
+<div class="modal-wrapper"></div>
+
 <div id="container">
     <h1 class="text-center main-header">CSS filters in action</h1>
 
@@ -48,6 +50,9 @@
         <div class="button-group">
             <!-- here will be preset buttons -->
         </div>
+    </div>
+    <div class="modal-actions" style="display: none;">
+        <span class="button open-modal-btn active">Open modal box with filtered background</span>
     </div>
     <div class="iframe-wrapper">
         <!-- here will be demo iframe -->
@@ -68,6 +73,18 @@
             frameborder="0" allowtransparency="true" border="0"
             width="100%" height="300px"
             ></iframe>
+</script>
+
+<script class="modal-box-tmpl" type="text/template">
+    <div class="modal-box">
+        <strong class="title">Modal box</strong>
+
+        <p>
+            Press ESC or "Close" button to close the modal with animation.
+        </p>
+
+        <span class="close-btn button active">Close</span>
+    </div>
 </script>
 <!--suppress HtmlUnknownTarget -->
 <script src="js/bundle.js"></script>

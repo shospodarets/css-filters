@@ -7,7 +7,8 @@ var UTILS = require('../utils/utils'),
  * @constructor
  * @param {{
  *  srcParam: {String},
- *  filtersParam: {String}
+ *  filtersParam: {String},
+ *  modalParam: {String}
  * }} options
  */
 var RouterController = function (options) {
@@ -76,6 +77,12 @@ RouterController.prototype.getFiltersFromUrl = function () {
     return activeFilters;
 };
 
+RouterController.prototype.getModalFromUrl = function () {
+    var modal = this.getParamFromUrl(this.options.modalParam);
+
+    return !!Number(modal);
+};
+
 // SETTERS
 RouterController.prototype.setIframeSrcToUrl = function (src) {
     if (this.getIframeSrcFromUrl() === src) {
@@ -91,6 +98,14 @@ RouterController.prototype.setFiltersToUrl = function (filter) {
     }
 
     this.setParamToUrl(this.options.filtersParam, JSON.stringify(filter));
+};
+
+RouterController.prototype.setModalToUrl = function (isOpen) {
+    if (this.getModalFromUrl() === isOpen) {
+        return;// prevent loops
+    }
+
+    this.setParamToUrl(this.options.modalParam, isOpen ? 1 : 0);
 };
 
 exports.RouterController = RouterController;

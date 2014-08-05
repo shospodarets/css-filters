@@ -5,6 +5,9 @@ var UTILS = require('../utils/utils'),
     getCssDeclaration = UTILS.getCssDeclaration;
 
 /**
+ * Write CSS from JS for needed selectors
+ * and show applied rules as text
+ *
  * @constructor
  * @param {{
  *   filtersModelData: {
@@ -15,14 +18,17 @@ var UTILS = require('../utils/utils'),
  *          [postfix]: {String},
  *          [filterCss]: {String}
  *      }
- *   }
+ *   },
+ *   applySelector: {String}
  *
  * }} options
  */
 var SchemeChanger = function (options) {
     this.options = options;
 
-    this.demoEls = document.querySelectorAll('.apply-filters');
+    this.applySelector = this.options.applySelector;
+    this.sheet = this.createSheet();
+
     this.appliedFilterText = document.querySelector('.applied-filter');
 
     this.setScheme(options.filtersModelData);
@@ -106,10 +112,22 @@ SchemeChanger.prototype.getEnabledFilters = function (filtersModelData) {
 SchemeChanger.prototype.setFilterCss = function (cssValue) {
     if (!cssValue) cssValue = ' none';
 
-    for (var i = this.demoEls.length; i--;) {
-        this.demoEls[i].style[filterProperty] = cssValue;
-    }
-    this.appliedFilterText.textContent = getCssDeclaration(filterProperty, cssValue);
+    var cssRule = getCssDeclaration(filterProperty, cssValue);
+
+    this.setCSSRules(cssRule);// Write CSS
+    this.appliedFilterText.textContent = cssRule;// show text on page
+};
+
+// Write CSS from JS
+SchemeChanger.prototype.createSheet = function () {
+    var css = document.createElement("style");
+    css.type = 'text/css';
+    document.head.appendChild(css);
+    return css;
+};
+
+SchemeChanger.prototype.setCSSRules = function (rules) {
+    this.sheet.innerHTML = this.applySelector + "{" + rules + "}";
 };
 
 exports.SchemeChanger = SchemeChanger;
