@@ -15,30 +15,40 @@ var featuresList = [
  * @constructor
  */
 var SupportedBrowser = function () {
-    this.isBrowserSupported = this.checkFeatures();
+    this.unsupportedFeatures = this.checkFeatures();
+    this.unsupportedFeaturesEl = document.getElementById('unsupportedFeatures');
+    this.isBrowserSupported = (this.unsupportedFeatures.length === 0);
+
     if (!this.isBrowserSupported) {
-        this.showUnsupportedMsg();
+        this.showUnsupportedMsg(this.unsupportedFeatures);
     }
 };
 
-SupportedBrowser.prototype.showUnsupportedMsg = function () {
+SupportedBrowser.prototype.showUnsupportedMsg = function (unsupportedFeatures) {
     document.body.className += ' not-supported-browser';
+
+    var text = '';
+    for (var i = 0; i < unsupportedFeatures.length; i++) {
+        text += '<li>' + unsupportedFeatures[i] + '</li>';
+    }
+    this.unsupportedFeaturesEl.innerHTML = text;
 };
 
 SupportedBrowser.prototype.checkFeatures = function () {
     var featureName,
         i,
-        isFeatureSupported;
+        isFeatureSupported,
+        unsupportedFeatures = [];
 
     for (i = featuresList.length; i--;) {
         featureName = featuresList[i];
         isFeatureSupported = this[featureName]();
         if (!isFeatureSupported) {
-            return false;
+            unsupportedFeatures.push(featureName);
         }
     }
 
-    return true;
+    return unsupportedFeatures;
 };
 
 /*---------- FEATURES CHECK ----------*/
