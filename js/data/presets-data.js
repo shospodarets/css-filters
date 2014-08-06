@@ -11,8 +11,7 @@ exports.presetsData = [
             invert: 1,
             'hue-rotate': 180,
             brightness: 0.9
-        },
-        activeOnInit: true
+        }
     },
     {
         name: "Vintage",
@@ -21,5 +20,20 @@ exports.presetsData = [
             saturate: 1,
             sepia: 0.6
         }
+    },
+    {
+        name: "Grayscale",
+        filters: {
+            grayscale: 1
+        }
+    },
+    {
+        name: "Acid",
+        filters: {
+            'hue-rotate': 72,
+            saturate: 3,
+            sepia: 0.2
+        },
+        activeOnInit: true
     }
 ];
