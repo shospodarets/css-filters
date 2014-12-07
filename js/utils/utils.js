@@ -7,7 +7,8 @@
  * @param parent
  */
 exports.inherit = function (child, parent) {
-    var Class = function () {};
+    var Class = function () {
+    };
     Class.prototype = parent.prototype;
     child.prototype = new Class();
 
@@ -54,9 +55,21 @@ exports.filterProperty = (function () {
     return _filterProperty;
 }());
 
-exports.scrollToElement = function(query){
+function findPos(obj) {
+    var curleft = 0, curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return {x: curleft, y: curtop};
+    }
+    return undefined;
+}
+
+exports.scrollToElement = function (query) {
     var scrollToEl = document.querySelector(query);
-    if(scrollToEl && scrollToEl.scrollIntoView){
-        scrollToEl.scrollIntoView(true);
+    if (scrollToEl && scrollToEl.scrollIntoView) {
+        window.scrollTo(0, findPos(scrollToEl).y);
     }
 };
