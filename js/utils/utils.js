@@ -68,6 +68,8 @@ function findPos(obj) {
 }
 
 exports.scrollToElement = function (query) {
+    if (!query) return;
+
     var scrollToEl = document.querySelector(query);
     if (scrollToEl && scrollToEl.scrollIntoView) {
         window.scrollTo(0, findPos(scrollToEl).y);
