@@ -53,3 +53,10 @@ exports.filterProperty = (function () {
     }
     return _filterProperty;
 }());
+
+exports.scrollToElement = function(query){
+    var scrollToEl = document.querySelector(query);
+    if(scrollToEl && scrollToEl.scrollIntoView){
+        scrollToEl.scrollIntoView(true);
+    }
+};

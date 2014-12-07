@@ -20,12 +20,7 @@ UTILS.inherit(RouterController, EventsSystem);
 
 // UTILS METHOD
 RouterController.prototype.setSearchString = function (searchString) {
-    var url = searchString;
-    if (window.location.hash) {
-        url += window.location.hash;// to safe hasj in url
-    }
-
-    history.replaceState({}, document.title, "?" + url);
+    history.replaceState({}, document.title, "?" + searchString);
 };
 
 RouterController.prototype.getParamFromUrl = function (name) {

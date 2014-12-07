@@ -6,7 +6,8 @@ var FiltersController = require('./controllers/filters-controller').FiltersContr
     SupportedBrowser = require('./components/supported-browser').SupportedBrowser,
     Presets = require('./components/presets').Presets,
     RouterController = require('./controllers/router-controller').RouterController,
-    Modal = require('./components/modal').Modal;
+    Modal = require('./components/modal').Modal,
+    UTILS = require('./utils/utils');
 
 var App = function () {
     var APPLY_CLASS = 'apply-filters',// to which class filters will be applied
@@ -55,6 +56,9 @@ var App = function () {
         activeFilters: this.routerController.getFiltersFromUrl(),
         onPresetActivated: this.onPresetActivated.bind(this)
     });
+
+    // SCROLL TO ELEMENT
+    UTILS.scrollToElement(this.routerController.getParamFromUrl('scrollTo'));
 };
 
 // EVENTS
