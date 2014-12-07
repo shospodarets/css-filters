@@ -20,7 +20,12 @@ UTILS.inherit(RouterController, EventsSystem);
 
 // UTILS METHOD
 RouterController.prototype.setSearchString = function (searchString) {
-    history.replaceState({}, document.title, "?" + searchString);
+    var url = searchString;
+    if (window.location.hash) {
+        url += window.location.hash;// to safe hasj in url
+    }
+
+    history.replaceState({}, document.title, "?" + url);
 };
 
 RouterController.prototype.getParamFromUrl = function (name) {
@@ -48,7 +53,9 @@ RouterController.prototype.setParamToUrl = function (key, value) {
         }
     }
 
-    if (i < 0) {kvp[kvp.length] = [key, value].join('=');}
+    if (i < 0) {
+        kvp[kvp.length] = [key, value].join('=');
+    }
     if (kvp[0] === '') kvp.shift();// prevent "?&" at the beginning of the quesry string
     this.setSearchString(kvp.join('&'));
 };
