@@ -23,7 +23,7 @@ function findPosition(element) {
         do {
             curleft += element.offsetLeft;
             curtop += element.offsetTop;
-        } while (element = element.offsetParent);
+        } while ((element = element.offsetParent));
         return {x: curleft, y: curtop};
     }
     return undefined;
