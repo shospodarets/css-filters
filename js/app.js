@@ -7,7 +7,7 @@ var FiltersController = require('./controllers/filters-controller').FiltersContr
     Presets = require('./components/presets').Presets,
     RouterController = require('./controllers/router-controller').RouterController,
     Modal = require('./components/modal').Modal,
-    UTILS = require('./utils/utils');
+    AdditionalUrlParamsProcessor = require('./components/additional-url-params-processor').AdditionalUrlParamsProcessor;
 
 var App = function () {
     var APPLY_CLASS = 'apply-filters',// to which class filters will be applied
@@ -57,8 +57,10 @@ var App = function () {
         onPresetActivated: this.onPresetActivated.bind(this)
     });
 
-    // SCROLL TO ELEMENT
-    UTILS.scrollToElement(this.routerController.getParamFromUrl('scrollTo'));
+    //noinspection JSUnusedGlobalSymbols
+    this.additionalUrlParamsProcessor = new AdditionalUrlParamsProcessor({
+        routerController: this.routerController
+    });
 };
 
 // EVENTS

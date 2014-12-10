@@ -54,24 +54,3 @@ exports.filterProperty = (function () {
     }
     return _filterProperty;
 }());
-
-function findPos(obj) {
-    var curleft = 0, curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return {x: curleft, y: curtop};
-    }
-    return undefined;
-}
-
-exports.scrollToElement = function (query) {
-    if (!query) return;
-
-    var scrollToEl = document.querySelector(query);
-    if (scrollToEl && scrollToEl.scrollIntoView) {
-        window.scrollTo(0, findPos(scrollToEl).y);
-    }
-};
