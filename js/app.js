@@ -61,6 +61,11 @@ var App = function () {
     this.additionalUrlParamsProcessor = new AdditionalUrlParamsProcessor({
         routerController: this.routerController
     });
+
+    if (window.self !== window.top) {
+        // if page opened as iframe
+        document.body.classList.add('iframe');
+    }
 };
 
 // EVENTS

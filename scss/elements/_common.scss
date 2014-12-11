@@ -16,7 +16,7 @@ body {
   font-family: Arial, Verdana, Tahoma, sans-serif;
   background: #fff;
   position: relative;
-  //noinspection SassScssUnresolvedFunction
+  //noinspection SassScssUnresolvedFunction,CssInvalidFunction
   @include add-prop-vendors(background, radial-gradient(center, ellipse cover, #ffffff 0%, #bbbbbb 100%));
 }
 
@@ -41,7 +41,7 @@ ul {
   list-style: none;
 }
 
-#container{
+#container {
   @include clearFix;
 
   & > * {
@@ -70,4 +70,11 @@ ul {
 
 .apply-filters {
   @include add-vendors(transition, all .5s ease);
+}
+
+// Hide elements when page is opened as iframe
+.iframe {
+  .hide-in-iframe {
+    display: none;
+  }
 }
