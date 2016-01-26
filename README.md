@@ -1,11 +1,15 @@
 # [CSS filters in action](http://malyw.github.io/css-filters/) 
 
-To run the project, do the following in the project folder:
+To run the project run the following in the project folder:
 
-<code>$ npm install</code>
+```bash
+npm install
+```
 
-<code>$ gulp</code>
+```bash
+npm run build
+```
 
 Open: [http://localhost:3000/](http://localhost:3000/)
 
-- <b>[Demo.](http://malyw.github.io/css-filters/)</b>
+- <b>[Demo.](https://malyw.github.io/css-filters/)</b>

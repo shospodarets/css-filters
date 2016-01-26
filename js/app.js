@@ -32,7 +32,7 @@ var App = function () {
     this.iframe = new Iframe({
         iframeWrapper: '.iframe-wrapper',
         iframeBoxTmlpEl: '.iframe-box-tmpl',
-        src: this.routerController.getIframeSrcFromUrl() || 'http://malyw.github.io/',
+        src: this.routerController.getIframeSrcFromUrl() || 'https://malyw.github.io/',
         srcForm: '.src-form',
         srcInput: '.src-input',
         onIframeSrcChange: this.onIframeSrcChange.bind(this)
